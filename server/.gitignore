@@ -1,0 +1,33 @@
+# Node.js
+node_modules/
+
+# Logs
+logs
+*.log
+
+# Dependency directories
+pids
+lock-wscript
+.npm
+.npm-client
+
+# Optional npm cache directory
+.npm/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# User-specific files
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+.komodotools
+
+# VS Code directories
+.vscode/
+
+# Node.js generated files
+node_modules
+npm-debug.log
+yarn-error.log
