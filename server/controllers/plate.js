@@ -27,7 +27,7 @@ const detectPlate = (req, res) => {
       axios.post("https://api.platerecognizer.com/v1/plate-reader/", body, {
         headers: {
           ...body.getHeaders(),
-          Authorization: "Token 732c4ff9a03b3c18b25b689154f0caae277f45b0",
+          Authorization: "Token " + process.env.PLATE_RECOGNIZER_API_TOKEN,
         },
       })
       .then((response) => {
