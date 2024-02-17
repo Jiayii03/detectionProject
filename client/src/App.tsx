@@ -1,7 +1,7 @@
 import React from "react";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import Plate from "./components/Plate";
+import Login from "./components/Login.tsx";
+import Register from "./components/Register.tsx";
+import Plate from "./components/Plate.tsx";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 

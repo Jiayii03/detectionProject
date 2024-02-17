@@ -6,9 +6,22 @@ function Plate() {
   const [authorisedMessage, setAuthorisedMessage] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [role, setRole] = useState("");
+  const [base64, setBase64] = useState("");
 
   function handleFileChange(e) {
     setSelectedFile(e.target.files[0]);
+    convertToBase64(e);
+  }
+
+  function convertToBase64(e) {
+    let reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = () => {
+      setBase64(reader.result as string);
+    };
+    reader.onerror = err => {
+      console.error(err);
+    }
   }
 
   function detectPlate() {
@@ -51,6 +64,7 @@ function Plate() {
           <input type="file" onChange={handleFileChange}/>
           <button onClick={detectPlate}>Press to test API</button>
           <p>{authorisedMessage}</p>
+          {base64 == "" || base64 == null ? "" : <img src={base64} alt="selected" width="300" height="300" />}
         </div>
       ) : (
         <div>
