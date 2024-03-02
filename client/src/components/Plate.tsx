@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
+import serverUrl from "../config";
 
 function Plate() {
   Axios.defaults.withCredentials = true;
@@ -34,7 +35,7 @@ function Plate() {
     formData.append("file", selectedFile);
     formData.append("role", role);
 
-    Axios.post("http://localhost:3001/api/plate/prediction", formData, {
+    Axios.post("http://" + serverUrl + ":3001/api/plate/prediction", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
