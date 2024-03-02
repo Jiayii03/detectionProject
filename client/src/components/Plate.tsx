@@ -6,10 +6,11 @@ function Plate() {
   Axios.defaults.withCredentials = true;
   const [authorisedMessage, setAuthorisedMessage] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState("")
   const [base64, setBase64] = useState("");
 
   function handleFileChange(e) {
+    setAuthorisedMessage("");
     setSelectedFile(e.target.files[0]);
     convertToBase64(e);
   }
