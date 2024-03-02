@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: ["http://localhost:3000", "https://platerecognizer.onrender.com"],
   credentials: true,
   optionSuccessStatus: 200, // return status for success
 };

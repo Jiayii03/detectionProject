@@ -35,7 +35,7 @@ function Plate() {
     formData.append("file", selectedFile);
     formData.append("role", role);
 
-    Axios.post("http://" + serverUrl + ":3001/api/plate/prediction", formData, {
+    Axios.post(serverUrl + ":3001/api/plate/prediction", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
