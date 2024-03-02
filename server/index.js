@@ -1,10 +1,12 @@
 const express = require("express");
-const db = require("./config/db");
 const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -28,19 +30,7 @@ app.use(
   })
 );
 
-db.connect((err) => {
-  if (err) {
-    console.error("Error connecting to database: " + err.message);
-    return;
-  }
-  console.log("Connected to the database");
-});
-
-const register = require("./routes/register");
-const login = require("./routes/login");
 const plate = require("./routes/plate");
-app.use("/api/register", register);
-app.use("/api/login", login);
 app.use("/api/plate", plate);
 
 app.listen(3001, () => {

@@ -1,8 +1,6 @@
 const express = require("express");
 const multer = require("multer");
-const { authPlateRecognizer } = require("../auth/auth-middlewares");
 const { detectPlate } = require("../controllers/plate");
-const { getRole } = require("../controllers/plate");
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -22,9 +20,7 @@ router
   .route("/prediction")
   .post(
     upload.fields([{ name: "file"}, { name: "role" }]),
-    authPlateRecognizer,
     detectPlate
   );
-router.route("/getRole").get(getRole);
 
 module.exports = router;

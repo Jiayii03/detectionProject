@@ -27,7 +27,7 @@ const detectPlate = (req, res) => {
       axios.post("https://api.platerecognizer.com/v1/plate-reader/", body, {
         headers: {
           ...body.getHeaders(),
-          Authorization: "Token " + process.env.PLATE_RECOGNIZER_API_TOKEN,
+          Authorization: "Token " + process.env.PLATE_RECOGNIZER_TOKEN,
         },
       })
       .then((response) => {
@@ -43,23 +43,6 @@ const detectPlate = (req, res) => {
   });
 };
 
-
-const getRole = (req, res) => {
-  console.log(req.session);
-  if (req.session.username) {
-    res.json({
-      loggedIn: true,
-      username: req.session.username,
-      role: req.session.role,
-    });
-  } else {
-    res.json({
-      loggedIn: false,
-    });
-  }
-};
-
 module.exports = {
   detectPlate,
-  getRole,
 };
