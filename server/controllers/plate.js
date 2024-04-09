@@ -38,6 +38,7 @@ const detectPlate = (req, res) => {
         })
         .catch((error) => {
           console.log(error);
+          res.send(error.response.data)
           reject(error);
         })
         .finally(() => {
