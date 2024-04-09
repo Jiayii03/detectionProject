@@ -1,6 +1,6 @@
 const express = require("express");
 const multer = require("multer");
-const { detectPlate } = require("../controllers/plate");
+const { detectPlate, apiTest } = require("../controllers/plate");
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -22,5 +22,7 @@ router
     upload.fields([{ name: "file"}, { name: "role" }]),
     detectPlate
   );
+
+router.get("/", apiTest);
 
 module.exports = router;

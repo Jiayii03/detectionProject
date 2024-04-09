@@ -54,6 +54,11 @@ const detectPlate = (req, res) => {
   });
 };
 
+const apiTest = (req, res) => {
+  res.send("API is working properly");
+}
+
 module.exports = {
   detectPlate,
+  apiTest
 };
