@@ -12,7 +12,7 @@ app.use(express.json({limit: '50mb'}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const corsOptions = {
-  origin: ["http://localhost:3000", "https://platerecognizer.onrender.com"],
+  origin: ["http://localhost:3000", "https://detection-project.vercel.app"],
   credentials: true,
   optionSuccessStatus: 200, // return status for success
 };
