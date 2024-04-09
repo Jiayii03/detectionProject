@@ -18,7 +18,7 @@ jobs:
       - name: Build, tag, and push image to DockerHub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          IMAGE_NAME: my-image
+          IMAGE_NAME: pattern-detection-app
         run: |
           cd patternDetection/
           docker build -t $DOCKERHUB_USERNAME/$IMAGE_NAME .
