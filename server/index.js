@@ -30,8 +30,8 @@ app.use(
   })
 );
 
-const plate = require("./routes/plate");
-app.use("/api/plate",  plate);
+const detectionRoute = require("./routes/detection");
+app.use("/api",  detectionRoute);
 
 app.listen(3001, () => {
   console.log("Server running on port 3001...");
