@@ -19,6 +19,10 @@ def hist(axis, lbp):
     n_bins = int(lbp.max() + 1)
     return axis.hist(lbp.ravel(), density=True, bins=n_bins, range=(0, n_bins), facecolor='0.5')
 
+@app.route('/')
+def test():
+    return "Server is running"
+
 @app.route('/detect_pattern', methods=['POST'])
 def detect_pattern():
     # Receive base64-encoded image from request
