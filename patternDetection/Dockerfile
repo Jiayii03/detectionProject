@@ -16,7 +16,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Expose port 8080
-EXPOSE 8080
+EXPOSE 5000
 
 # Set the entry point and command
 ENTRYPOINT ["python3", "-u"]
