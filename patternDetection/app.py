@@ -120,7 +120,7 @@ def detect_pattern():
     mean_kl_divergence = np.mean(kl_divergence_values)
 
     if mean_kl_divergence < 0.1:
-        return jsonify({'message': 'Pattern detected', 'mean_kl_divergence': mean_kl_divergence, 'edge_density': edge_density})
+        return jsonify({'message': 'Pattern detected', 'score': 100 - (mean_kl_divergence * 100), 'mean_kl_divergence': mean_kl_divergence, 'edge_density': edge_density})
     else:
         return jsonify({'message': 'No pattern detected', 'mean_kl_divergence': mean_kl_divergence, 'edge_density': edge_density})
 
