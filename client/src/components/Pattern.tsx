@@ -4,12 +4,14 @@ import { serverUrl, serverPort } from "../config";
 
 function Pattern() {
   Axios.defaults.withCredentials = true;
-  const [authorisedMessage, setAuthorisedMessage] = useState("");
+  const [resultMessage, setResultMessage] = useState("");
+  const [scoreMessage, setScoreMessage] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [base64, setBase64] = useState<string>("");
 
   function handleFileChange(e) {
-    setAuthorisedMessage("");
+    setResultMessage("");
+    setScoreMessage("");
     setSelectedFile(e.target.files[0]);
     convertToBase64(e.target.files[0]);
   }
@@ -32,7 +34,7 @@ function Pattern() {
 
   function detectPattern() {
     if (!selectedFile) {
-      setAuthorisedMessage("Please select a file");
+      setResultMessage("Please select a file");
       return;
     }
 
@@ -43,15 +45,15 @@ function Pattern() {
     Axios.post(serverUrl + serverPort + "/api/detectPattern", requestBody)
       .then((response) => {
         console.log(response);
-        if (response.data === "Unauthorised") {
-          setAuthorisedMessage("You're not authorised");
-        } else {
-          setAuthorisedMessage("Result: " + response.data.message);
+  
+        setResultMessage("Result: " + response.data.message);
+        if (response.data.score) {
+          setScoreMessage("Score: " + response.data.score);
         }
       })
       .catch((error) => {
         console.error("Error detecting plate:", error);
-        setAuthorisedMessage("Error occurred while processing");
+        setResultMessage("Error occurred while processing");
       });
   }
 
@@ -61,10 +63,11 @@ function Pattern() {
         <h1>Pattern Detection</h1>
         <input type="file" onChange={handleFileChange} />
         <button onClick={detectPattern}>Press to test API</button>
-        <p>{authorisedMessage}</p>
         {base64 && (
           <img src={base64} alt="selected" width="300" height="300" />
         )}
+        <p>{resultMessage}</p>
+        <p>{scoreMessage}</p>
       </div>
     </div>
   );
